@@ -1,0 +1,35 @@
+.Admin {
+    width: 710px;
+    margin: 30px auto;
+    background-color: var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 6px;
+    padding: 10px;
+
+    span {
+        color: red;
+    }
+
+    input {
+        background-color: #fff;
+    }
+
+    button {
+        background-color: var(--main-color);
+        border: none;
+        margin-bottom: 20px;
+        border: 2px solid #fff;
+        font-weight: bold;
+    }
+
+    input {
+        border: 1px solid var(--main-color);
+    }
+
+    label {
+        color: #fff;
+    }
+
+    
+}
+

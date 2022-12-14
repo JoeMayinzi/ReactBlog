@@ -1,0 +1,18 @@
+<article style={{width: "18rem"}} className="mr-10">
+            <img src={img} alt="pic de l'article" className='article-img' />
+            <div className="text-content">
+             <span> {date} </span> <br />
+             <span> {category}</span>   
+            <h5 className="article-title" onClick={()=> deleteArticle(_id)}>{ title }</h5>
+            <p className='card-text article-content'> {content} </p>
+            <span> écrit par : { author } </span>
+            <div className="reactions">
+            <p>
+                <i class="fa fa-heart" aria-hidden="true"
+                    onClick={() => setLike(like + 1) }
+                ></i>
+                <span>{like}</span>
+            </p>
+            </div>
+            </div>
+            </article>
