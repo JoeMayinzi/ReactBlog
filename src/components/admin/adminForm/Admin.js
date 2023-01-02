@@ -34,20 +34,11 @@ const Admin = () => {
     const {register, handleSubmit, reset,  formState: {errors, isValidating}} = useForm({
         resolver : yupResolver(schema)
     });
-
-    const [value, setValue] = useState({
-        image : "",
-        title : "",
-        content : "",
-        author : "",
-        category : "",
-        liked : 0
-    })
     
     async function postArticle (data) {
         try {
 
-            const request = await fetch("https://restapi.fr/api/articles", {
+            const request = await fetch("https://restapi.fr/api/mesarticles", {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"
@@ -56,9 +47,7 @@ const Admin = () => {
                 body : JSON.stringify(data)
             })
 
-
             if (request.ok) {
-                reset(value)
                 console.log("requete reusssie")
             }
 
@@ -69,40 +58,7 @@ const Admin = () => {
 
     
 
-    function handleInputImage (e) {
-        setValue({
-            ...value,
-            image : e.target.value
-        })
-    }
-
-    function handleInputTitle (e) {
-        setValue({
-            ...value,
-            title : e.target.value
-        })
-    }
-
-    function handleInputGategory (e) {
-        setValue({
-            ...value,
-            category : e.target.value
-        })
-    }
-
-    function handleInputContent(e) {
-        setValue({
-            ...value,
-            content : e.target.value
-        })
-    }
-
-    function handleInputAuthor (e) {
-        setValue({
-            ...value,
-            author : e.target.value
-        })
-    }
+    
 
     
     
@@ -116,9 +72,8 @@ const Admin = () => {
                     <label htmlFor="img" className="form-label">Image de l'article</label>
                     <input type="text" 
                         {...register("articleImg")}
-                        onChange={handleInputImage}
                      />
-                     { errors.articleImg && <span className="error">{
+                     { errors.articleImg && <span className="errors">{
                             errors.articleImg.message}
                     </span> }
                     
@@ -127,7 +82,6 @@ const Admin = () => {
                     <label htmlFor="img" className="form-label">Titre de l'article</label>
                     <input type="text"  id='img'
                         {...register("articleTitle")}
-                        onChange={handleInputTitle}
                      />
                      { errors.articleTitle && <span className="error">{
                             errors.articleTitle.message}
@@ -138,9 +92,8 @@ const Admin = () => {
                     <label htmlFor="categorie" className="form-label">Catégorie de l'article</label>
                     <input type="text"  id='categorie'
                         {...register("articleGategory")}
-                        onChange={handleInputGategory}
                      />
-                     { errors.articleGategory && <span className="error">{
+                     { errors.articleGategory && <span className="errors">{
                             errors.articleGategory.message}
                     </span> }
                      
@@ -149,7 +102,6 @@ const Admin = () => {
                     <label htmlFor="content" className="form-label"> Contenu de l'article</label>
                     <input type="text"  id='content'
                         {...register("articleContent") }
-                        onChange={handleInputContent}
                     />
                     
                 </div>
@@ -157,9 +109,8 @@ const Admin = () => {
                     <label htmlFor="author" className="form-label">Autheur de l'article</label>
                     <input type="text" className='form-control' id='author'
                         {...register("articleAuthor")}
-                        onChange={handleInputAuthor}
                      />
-                     { errors.articleAuthor && <span className="error">{
+                     { errors.articleAuthor && <span className="errors">{
                             errors.articleAuthor.message}
                     </span> }
                 </div>

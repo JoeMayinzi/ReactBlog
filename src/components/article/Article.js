@@ -4,6 +4,8 @@ import Moment from 'react-moment';
 
 const Article = ({ article, _id, img, title, category, content, author, date, deleteArticle}) => {
 
+    const sliceContent = content.slice(0, 200)
+    
     return (
             <div className={`${styles.ArticleContainer}`}>
             <article style={{width: "18rem"}} className="mr-10">
@@ -15,11 +17,8 @@ const Article = ({ article, _id, img, title, category, content, author, date, de
             <div className="text-content">
              <span> {<Moment format="DD/MM/YY">{date}</Moment>} </span> <br />
              <span> {category}</span>   
-            <Link to={`/singleArticle/${article._id}`}>
             <h5 className="article-title">{ title }</h5>
-            </Link>
-            <p className='card-text article-content'> {content} </p>
-            <span> écrit par : { author } </span>
+            <p className='card-text article-content'> {sliceContent} <Link to={`/singleArticle/${article._id}`}>Lire plus</Link> </p>
             </div>
             </article>
         </div>

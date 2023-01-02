@@ -4,20 +4,19 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
     return (
-        <div className={` mb-5 ${styles.Header}`}>
-            <nav className='container '>
+        <div className={` ${styles.Header}`}>
+            <nav className='container'>
             <ul>
                 <a  data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">
                   <i class="fa-solid fa-bars"></i>
                 </a>
-                <li className='logo'><strong>Brand</strong></li>
+                <li className='logo'><strong>Comptable Entrepreuneur</strong></li>
             </ul>
             <ul>
                 <Link to="/"><li className='navLink'>Accueil</li></Link>
                 <Link><li className='navLink'>Catégorie</li></Link>
-                <Link><li className='navLink'>Services</li></Link>
-                <Link><li className='navLink'>Formations</li></Link>
-                <Link><li className='navLink'>A propos</li></Link>
+                <Link to="/services"><li className='navLink'>Services</li></Link>
+                <Link to={"/about"}><li className='navLink'>A propos</li></Link>
                 <Link><li className='navLink'>Contact</li></Link>
                 <Link to="/admin"><li className='navLink'>Admin</li></Link>
                 <i class="fa fa-search nav" aria-hidden="true"></i>

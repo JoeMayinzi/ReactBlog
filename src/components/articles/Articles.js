@@ -6,18 +6,19 @@ const Articles = () => {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [search, setSearch] = useState("");
+    
+    
 
     useEffect(()=>{
         const fetchArticles = async () => {
             
             try {
-                const articleRequest = await fetch("https://restapi.fr/api/articles");
+                const articleRequest = await fetch("https://restapi.fr/api/mesarticles");
                 const response = await articleRequest.json()
                 const newArticles = response
 
                 if (articleRequest.ok) {
-                    setArticles(newArticles) 
-                    console.log(articles)
+                    setArticles(newArticles)
                 }
 
                 setIsLoading(false)
