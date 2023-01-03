@@ -1,7 +1,7 @@
 .Admin {
     width: 710px;
     margin: 30px auto;
-    background-color: var(--main-color);
+    background-color: #3c40c6;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 6px;
     padding: 10px;
@@ -11,16 +11,14 @@
     }
 
     button {
-        background-color: var(--main-color);
+        background-color: #3c40c6;
         border: none;
         margin-bottom: 20px;
         border: 2px solid #fff;
         font-weight: bold;
     }
 
-    input {
-        border: 1px solid var(--main-color);
-    }
+    
 
     label {
         color: #fff;

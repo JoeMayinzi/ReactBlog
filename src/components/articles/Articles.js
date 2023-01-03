@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Article from '../article/Article';
+import ApiUrlContext from '../article/context/ApiUrlContext';
 import styles from "./Articles.module.scss";
 
 const Articles = () => {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [search, setSearch] = useState("");
+    const API_URL = useContext(ApiUrlContext)
     
     
 
@@ -13,7 +16,7 @@ const Articles = () => {
         const fetchArticles = async () => {
             
             try {
-                const articleRequest = await fetch("https://restapi.fr/api/mesarticles");
+                const articleRequest = await fetch(API_URL);
                 const response = await articleRequest.json()
                 const newArticles = response
 

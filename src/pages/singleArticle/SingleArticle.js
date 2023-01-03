@@ -7,20 +7,22 @@ import Moment from 'react-moment';
 import styles from "./SingleArticle.module.scss"
 import CommentForm from '../../components/comments/CommentForm';
 import Progress from '../../components/progress/Progress';
+import { useContext } from 'react';
+import ApiUrlContext from '../../components/article/context/ApiUrlContext';
 
 function SingleArticle(props) {
     const { id } = useParams()
     const [singleArticle, setSingleArticle] = useState({})
-    const [comments, setComments] = useState([])
-    const [scrollYSize, SetScrollYSize] = useState(null)
+    const [comments, setComments] = useState([]);
+    const [scrollYSize, SetScrollYSize] = useState(null);
+    const API_URL = useContext(ApiUrlContext)
 
     useEffect(()=>{
         const fetchSingleArticle = async () => {
             try {
-                const response = await fetch(`https://restapi.fr/api/mesarticles/${id}`)
+                const response = await fetch(`${API_URL }/${id}`)
                 const newSingleArticles = await response.json()
                 setSingleArticle(newSingleArticles)
-                console.log(singleArticle)
 
             } catch (e) {
                 console.log("une erreir est survenue", e)
@@ -47,9 +49,8 @@ function SingleArticle(props) {
         window.addEventListener("scroll", ()=> {
             const scrollSize = window.scrollY
             SetScrollYSize(scrollSize)
-            console.log(scrollYSize)
         })
-    })
+    }, [])
 
     return (
         <div className={`mt-5 ${styles.singleArticle}`}>

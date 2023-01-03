@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Admin.module.scss";
+import { useContext } from 'react';
+import ApiUrlContext from '../../article/context/ApiUrlContext';
 
 const schema = yup.object({
     articleImg : yup
@@ -34,11 +36,13 @@ const Admin = () => {
     const {register, handleSubmit, reset,  formState: {errors, isValidating}} = useForm({
         resolver : yupResolver(schema)
     });
+
+    const API_URL = useContext(ApiUrlContext)
     
     async function postArticle (data) {
         try {
 
-            const request = await fetch("https://restapi.fr/api/mesarticles", {
+            const request = await fetch(API_URL, {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"
@@ -83,7 +87,7 @@ const Admin = () => {
                     <input type="text"  id='img'
                         {...register("articleTitle")}
                      />
-                     { errors.articleTitle && <span className="error">{
+                     { errors.articleTitle && <span className="errors">{
                             errors.articleTitle.message}
                     </span> }
                      
