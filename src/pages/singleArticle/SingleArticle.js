@@ -8,7 +8,7 @@ import styles from "./SingleArticle.module.scss"
 import CommentForm from '../../components/comments/CommentForm';
 import Progress from '../../components/progress/Progress';
 import { useContext } from 'react';
-import ApiUrlContext from '../../components/article/context/ApiUrlContext';
+import ApiUrlContext from '../../components/context/ApiUrlContext';
 
 function SingleArticle(props) {
     const { id } = useParams()

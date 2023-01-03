@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import Article from '../article/Article';
-import ApiUrlContext from '../article/context/ApiUrlContext';
+import ApiUrlContext from '../context/ApiUrlContext';
 import styles from "./Articles.module.scss";
 
 const Articles = () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import styles from "./Header.module.scss";
 
 const Header = () => {
@@ -14,7 +15,9 @@ const Header = () => {
             </ul>
             <ul>
                 <Link to="/"><li className='navLink'>Accueil</li></Link>
-                <Link><li className='navLink'>Catégorie</li></Link>
+                <li className='navLink'>
+                    <CategoryFilter />
+                </li>
                 <Link to="/services"><li className='navLink'>Services</li></Link>
                 <Link to={"/about"}><li className='navLink'>A propos</li></Link>
                 <Link><li className='navLink'>Contact</li></Link>

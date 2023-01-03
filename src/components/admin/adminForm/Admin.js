@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./Admin.module.scss";
 import { useContext } from 'react';
-import ApiUrlContext from '../../article/context/ApiUrlContext';
+import ApiUrlContext from '../../context/ApiUrlContext';
+import Categories from '../../article/categories/Categories';
 
 const schema = yup.object({
     articleImg : yup
@@ -33,7 +33,7 @@ const schema = yup.object({
 });
 
 const Admin = () => {
-    const {register, handleSubmit, reset,  formState: {errors, isValidating}} = useForm({
+    const {register, handleSubmit, formState: {errors, isValidating}} = useForm({
         resolver : yupResolver(schema)
     });
 
@@ -94,9 +94,13 @@ const Admin = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="categorie" className="form-label">Catégorie de l'article</label>
-                    <input type="text"  id='categorie'
-                        {...register("articleGategory")}
-                     />
+                    <select {...register("articleGategory")}>
+                        {
+                            Categories.map(category => <option value={category.categoryName}>
+                                { category.categoryName }
+                            </option> )
+                        }
+                    </select>
                      { errors.articleGategory && <span className="errors">{
                             errors.articleGategory.message}
                     </span> }

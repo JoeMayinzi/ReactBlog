@@ -1,6 +1,5 @@
 import React from 'react';
 import datas from './servicesData/data';
-console.log(datas)
 
 function Services(props) {
     return (
