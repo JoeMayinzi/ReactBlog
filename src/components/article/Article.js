@@ -7,9 +7,9 @@ const Article = ({ article, _id, img, title, category, content, author, date, de
     const sliceContent = content.slice(0, 200)
     
     return (
-            <div className={`${styles.ArticleContainer}`}>
+            <div className={`${styles.ArticleContainer} `}>
                 <Link style={{textDecoration: 'none', color : "black"}} to={`/singleArticle/${article._id}`}>
-                    <article style={{width: "18rem"}} className="mr-10">
+                    <article style={{width: "18rem"}} className="mr-10 hvr-float">
                         <img src={img} alt="pic de l'article" className='article-img' />
                         <i class="fa fa-times" aria-hidden="true"
                         onClick={()=> deleteArticle(article._id)}
