@@ -21,7 +21,7 @@ function App() {
             <Route path="/about" element={<About></About>} />
             <Route path="/services" element={<Services></Services>} />
             <Route path="/singleArticle/:id" element={ <SingleArticle></SingleArticle>  } />
-            <Route path="/about" element={<SingleCategory></SingleCategory>} />
+            <Route path="/SingleCategory/:category" element={<SingleCategory></SingleCategory>} />
         </Routes>
     </div>
   );
