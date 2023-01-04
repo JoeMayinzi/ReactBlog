@@ -44,7 +44,7 @@ const Articles = () => {
     
     return (
         <div className={`container d-flex ${styles.Articles}`}>
-            <input type="text" className='search mt-5' placeholder="Search article" required
+            <input type="text" className='search mt-2' placeholder="Search article" required
                 style={{"border" : "2px solid #000"}}
                 onChange={(e)=> seachArticle(e)}
             >
