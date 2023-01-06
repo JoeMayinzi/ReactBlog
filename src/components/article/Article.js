@@ -21,7 +21,7 @@ const Article = ({ article, _id, img, title, category, content, author, date, de
                             <h5 className="article-title">{ title }</h5>
                             <p className='card-text article-content'> {sliceContent} </p>
                         </div>
-                </article>
+                    </article>
                 </Link> 
         </div>
     );

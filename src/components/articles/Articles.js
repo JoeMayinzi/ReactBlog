@@ -1,37 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
+import { useFetchData } from '../../hooks/useFetchData';
 import Article from '../article/Article';
 import ApiUrlContext from '../context/ApiUrlContext';
 import styles from "./Articles.module.scss";
 
 const Articles = () => {
-    const [articles, setArticles] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const API_URL = useContext(ApiUrlContext);
+    const [articles, setArticles, isLoading] = useFetchData(API_URL);
     const [search, setSearch] = useState("");
-    const API_URL = useContext(ApiUrlContext)
+    console.log(setArticles)
     
-    
-
-    useEffect(()=>{
-        const fetchArticles = async () => {
-            
-            try {
-                const articleRequest = await fetch(API_URL);
-                const response = await articleRequest.json()
-                const newArticles = response
-
-                if (articleRequest.ok) {
-                    setArticles(newArticles)
-                }
-
-                setIsLoading(false)
-            } catch (e) {
-                console.log("une erreur s'est produite", e)
-            }
-        } 
-
-        fetchArticles()
-    }, [])
 
     function deleteArticle(_id) {
         setArticles(articles.filter(article => article._id !== _id))

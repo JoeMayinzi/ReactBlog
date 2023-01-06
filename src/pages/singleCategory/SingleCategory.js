@@ -3,14 +3,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Moment from 'react-moment';
 import { useParams } from 'react-router-dom';
-import ApiUrlContext from '../../components/context/ApiUrlContext';
-import styles from "./SingleCategory.module.scss"
+import styles from "./SingleCategory.module.scss";
 
 function SingleCategory(props) {
     const params = useParams();
     console.log(params.category)
-    const API_URL = ApiUrlContext
-    const [article, setArticles] = useState([])
+    const [article, setArticles] = useState([]);
     
     useEffect(()=> {
         const fetchData = async () => {

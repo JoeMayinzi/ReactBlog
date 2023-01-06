@@ -7,6 +7,7 @@ import SingleArticle from "./pages/singleArticle/SingleArticle";
 import About from "./pages/about/About";
 import Services from "./pages/services/Services";
 import SingleCategory from "./pages/singleCategory/SingleCategory";
+import Test from "./pages/test/Test";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/services" element={<Services></Services>} />
             <Route path="/singleArticle/:id" element={ <SingleArticle></SingleArticle>  } />
             <Route path="/SingleCategory/:category" element={<SingleCategory></SingleCategory>} />
+            <Route path="/test" element={<Test></Test>} />
         </Routes>
     </div>
   );
