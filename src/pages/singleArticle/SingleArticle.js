@@ -9,27 +9,15 @@ import CommentForm from '../../components/comments/CommentForm';
 import Progress from '../../components/progress/Progress';
 import { useContext } from 'react';
 import ApiUrlContext from '../../components/context/ApiUrlContext';
+import { useFetchData } from '../../hooks/useFetchData';
 
 function SingleArticle(props) {
+    const API_URL = useContext(ApiUrlContext)
     const { id } = useParams()
-    const [singleArticle, setSingleArticle] = useState({})
+    /*const [singleArticle, setSingleArticle] = useState({})*/
+    const [articles] = useFetchData(`${API_URL }/${id}`)
     const [comments, setComments] = useState([]);
     const [scrollYSize, SetScrollYSize] = useState(null);
-    const API_URL = useContext(ApiUrlContext)
-
-    useEffect(()=>{
-        const fetchSingleArticle = async () => {
-            try {
-                const response = await fetch(`${API_URL }/${id}`)
-                const newSingleArticles = await response.json()
-                setSingleArticle(newSingleArticles)
-
-            } catch (e) {
-                console.log("une erreir est survenue", e)
-            }
-        }
-        fetchSingleArticle()
-    }, [])
 
     useEffect(()=> {
         const displayComments = async () => {
@@ -59,12 +47,12 @@ function SingleArticle(props) {
             <Link to={"/"} style={{"textDecoration" : "none"}} className="mb-3">
                 Retour à la page d'accueil
             </Link>
-            <img src={singleArticle.articleImg} alt="pic de l'article" className='mb-2' /> <br />
+            <img src={articles.articleImg} alt="pic de l'article" className='mb-2' /> <br />
             <span>
-                Publié le : <Moment format='DD/MM/YY'>{singleArticle.createdAt}</Moment>
+                Publié le : <Moment format='DD/MM/YY'>{articles.createdAt}</Moment>
             </span>
-            <p> {singleArticle.articleContent} </p>
-            <span>écrit par : {singleArticle.articleAuthor}</span> <br />
+            <p> {articles.articleContent} </p>
+            <span>écrit par : {articles.articleAuthor}</span> <br />
             <CommentForm />
 
             <ul className='comment'>
