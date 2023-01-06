@@ -1,35 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import Moment from 'react-moment';
 import { useParams } from 'react-router-dom';
+import { useFetchData } from '../../hooks/useFetchData';
 import styles from "./SingleCategory.module.scss";
 
 function SingleCategory(props) {
     const params = useParams();
     console.log(params.category)
-    const [article, setArticles] = useState([]);
+    const [articles] = useFetchData(`https://restapi.fr/api/mesarticles?articleGategory=${params.category}`);
     
-    useEffect(()=> {
-        const fetchData = async () => {
-            try {
-                const request = await fetch(`https://restapi.fr/api/mesarticles?articleGategory=${params.category}`);
-                const response = await request.json();
-                const newArticles = response
-
-                if (request.ok) {
-                    setArticles(newArticles)
-                }
-            } catch (e) {
-                console.log('une erreur est survenur', e)
-            }
-        }
-        fetchData()
-    }, [])
+    
     return (
         <div className={`${styles.singleCategoryContainer}`}>
             {
-                article.map(art => <article style={{width: "18rem"}} className="mr-10 hvr-float p-0 mb-2">
+                articles.map(art => <article style={{width: "18rem"}} className="mr-10 hvr-float p-0 mb-2">
                 <img src={art.articleImg} alt="pic de l'article" className='article-img' />
                 <div className="text-content p-2">
                     <span> {<Moment format="DD/MM/YY">{art.createdAt}</Moment>} </span> <br />
