@@ -10,7 +10,7 @@ function CategoryFilter(props) {
     }
     
     return (
-        <select onChange={e=> handleChangeSelect(e.target.value)}>
+            <select onChange={e=> handleChangeSelect(e.target.value)}>
                 <option value="" disabled selected>Categories</option>
                     {Categories.map(category => <option value={category.categoryName}>
                         {category.categoryName}

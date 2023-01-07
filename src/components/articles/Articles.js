@@ -9,8 +9,6 @@ const Articles = () => {
     const API_URL = useContext(ApiUrlContext);
     const [articles, setArticles, isLoading] = useFetchData(API_URL);
     const [search, setSearch] = useState("");
-    console.log(setArticles)
-    
 
     function deleteArticle(_id) {
         setArticles(articles.filter(article => article._id !== _id))
@@ -30,7 +28,6 @@ const Articles = () => {
             </input>
             {
                 isLoading === true ? <i class="fa fa-spinner" aria-hidden="true"></i> :
-                
                 articles
                     .filter(article => article.articleTitle.toLowerCase().startsWith(search))
                     .map((article) => (

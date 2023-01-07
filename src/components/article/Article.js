@@ -19,7 +19,7 @@ const Article = ({ article, _id, img, title, category, content, author, date, de
                             <span> {<Moment format="DD/MM/YY">{date}</Moment>} </span> <br />
                             <span> {category}</span>   
                             <h5 className="article-title">{ title }</h5>
-                            <p className='card-text article-content'> {sliceContent} </p>
+                            <p className='card-text article-content'> {sliceContent}... </p>
                         </div>
                     </article>
                 </Link> 
